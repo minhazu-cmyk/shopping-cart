@@ -25,9 +25,9 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button id="minusHandle"  class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <button onclick="handleProductChange (false);"  class="btn btn-default"><i class="fas fa-minus"></i></button>
                            <input id="iphoneBlack" type="text" class="form-control text-center"  value="1">
-                           <button  id="plusHandle" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button  onclick="handleProductChange(true);" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
                      
                         <h5  id="blackPrice">$1219</h5>
@@ -44,12 +44,13 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button id= class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button onclick="handlePhoneChange(false);" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="case-count" type="text" class="form-control text-center" value="1">
+                           <button onclick="handlePhoneChange(true);
+                           " class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$59</h5>
+                        <h5 id="case-price" >$59</h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -79,8 +80,8 @@
       </div>
   
    <script>
-      document.getElementById('plusHandle').addEventListener('click', function(){handleProductChange(true);
-   })
+     // document.getElementById('plusHandle').addEventListener('click', function(){handleProductChange(true);
+   //})
           //console.log('plus clicked')
        //  const iphoneBlack= document.getElementById('iphoneBlack');
        //console.log(iphoneBlack.value);
@@ -90,9 +91,10 @@
         ///const blackPrice = iphoneTotalNumber *1219;
        // document.getElementById('blackPrice').innerText="$"+ blackPrice;
 
-       document.getElementById('minusHandle').addEventListener('click', function(){handleProductChange (false);
+      // document.getElementById('minusHandle').addEventListener('click', function()//{handleProductChange (false);
 
-    })
+    //})
+
      function handleProductChange (isInCrease){
     //document.getElementById('minusHandle').addEventListener('click', function(){
        const iphoneBlack = document.getElementById('iphoneBlack');
@@ -102,13 +104,46 @@
       if (isInCrease==false && iphoneNumber>0){
         iphoneTotalNumber = iphoneNumber-1;}
         if (isInCrease == true){
-           iphoneTotalNumber=iphoneNumber+1;
-        
-      }
+           iphoneTotalNumber=iphoneNumber+1;}
      iphoneBlack.value = iphoneTotalNumber;
       const blackPrice = iphoneTotalNumber*1219;
      document.getElementById('blackPrice').innerText="$" + blackPrice;}
    // })
+
+
+   // document.getElementById('case-increase').addEventListener('click', function(){handlePhoneChange(true);
+
+    /// })
+        
+    // const caseCount = document.getElementById('case-count');
+    // const caseNumber = parseInt(caseCount.value);
+    // const caseTotalNumber = caseNumber + 1;
+    // caseCount.value = caseTotalNumber;
+    // const casePrice = caseTotalNumber*59;
+    // document.getElementById('case-price').innerText ="$"+ casePrice;
+
+    // document.getElementById('case-decrease').addEventListener('click', function()/{handlePhoneChange(false);
+     //})
+
+function handlePhoneChange(isMaximum){
+        const caseCount =document.getElementById('case-count');
+         caseNumber = parseInt(caseCount.value);
+         //caseTotalNumber = caseNumber-1;
+         caseTotalNumber = caseNumber;
+         if(isMaximum==true){
+            caseTotalNumber = caseNumber+1;
+         }
+         if(isMaximum==false && caseNumber>0 ){
+            caseTotalNumber = caseNumber-1;
+         }
+         caseCount.value = caseTotalNumber;
+         const casePrice = caseTotalNumber*59;
+         document.getElementById('case-price').innerText="$"+casePrice; 
+  }
+
+
+ 
+
     </script>
 
 </section>

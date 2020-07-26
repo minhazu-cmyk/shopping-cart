@@ -25,12 +25,12 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button onclick="handleProductChange (false);"  class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input id="iphoneBlack" type="text" class="form-control text-center"  value="1">
-                           <button  onclick="handleProductChange(true);" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button onclick="handlePhoneChange('iphone',false);"  class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="iphone-count" type="text" class="form-control text-center"  value="1">
+                           <button  onclick="handlePhoneChange('iphone',true);" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
                      
-                        <h5  id="blackPrice">$1219</h5>
+                        <h5  id="iphone-Price">$1219</h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -44,9 +44,9 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button onclick="handlePhoneChange(false);" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <button onclick="handlePhoneChange('case', false);" class="btn btn-default"><i class="fas fa-minus"></i></button>
                            <input id="case-count" type="text" class="form-control text-center" value="1">
-                           <button onclick="handlePhoneChange(true);
+                           <button onclick="handlePhoneChange('case',  true);
                            " class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
@@ -83,7 +83,7 @@
      // document.getElementById('plusHandle').addEventListener('click', function(){handleProductChange(true);
    //})
           //console.log('plus clicked')
-       //  const iphoneBlack= document.getElementById('iphoneBlack');
+       //  const iphoneBlack= document.getElementById('iphoneblack');
        //console.log(iphoneBlack.value);
           //const iphoneNumber = parseInt(iphoneBlack .value);
          // const iphoneTotalNumber = iphoneNumber+1;
@@ -95,19 +95,50 @@
 
     //})
 
-     function handleProductChange (isInCrease){
+     //function handleProductChange (isInCrease){
     //document.getElementById('minusHandle').addEventListener('click', function(){
-       const iphoneBlack = document.getElementById('iphoneBlack');
-       const iphoneNumber = parseInt(iphoneBlack.value);
+      // const iphoneBlack = document.getElementById('iphone-count');
+       //const iphoneNumber = parseInt(iphoneBlack.value);
       // const iphoneTotalNumber= iphoneNumber-1;
-      let iphoneTotalNumber = iphoneNumber
-      if (isInCrease==false && iphoneNumber>0){
-        iphoneTotalNumber = iphoneNumber-1;}
-        if (isInCrease == true){
-           iphoneTotalNumber=iphoneNumber+1;}
-     iphoneBlack.value = iphoneTotalNumber;
-      const blackPrice = iphoneTotalNumber*1219;
-     document.getElementById('blackPrice').innerText="$" + blackPrice;}
+      //let iphoneTotalNumber = iphoneNumber 
+      //if (isInCrease==false && iphoneNumber>0){
+      //  iphoneTotalNumber = iphoneNumber-1;}
+        //if (isInCrease == true){
+         //  iphoneTotalNumber=iphoneNumber+1;}
+    // iphoneBlack.value = iphoneTotalNumber;
+     // const blackPrice = iphoneTotalNumber*1219;
+     //document.getElementById('blackPrice').innerText="$" + blackPrice;}
+
+
+     function handlePhoneChange(product, isInCrease){
+        const productCount =document.getElementById(product+'-count');
+         productNumber = parseInt(productCount.value);
+         //caseTotalNumber = caseNumber-1;
+         productTotalNumber = productNumber;
+         if(isInCrease==true){
+            productTotalNumber = productNumber+1;
+         }
+         if(isInCrease==false && productNumber>0 ){
+            productTotalNumber = productNumber-1;
+         }
+         productCount.value = productTotalNumber;
+         //const productPrice = productTotalNumber*59;
+          let productPrice = 0;
+          if(product =='case'){
+             productPrice = productTotalNumber*59;
+          }
+          if(product=='iphone'){
+             productPrice=productTotalNumber*1219;
+          }
+
+
+         document.getElementById(product + '-price').innerText="$"+ productPrice; 
+  }
+
+
+
+
+
    // })
 
 
@@ -125,21 +156,21 @@
     // document.getElementById('case-decrease').addEventListener('click', function()/{handlePhoneChange(false);
      //})
 
-function handlePhoneChange(isMaximum){
-        const caseCount =document.getElementById('case-count');
-         caseNumber = parseInt(caseCount.value);
+//function handlePhoneChange(isMaximum){
+       // const caseCount =document.getElementById('case-count');
+         //caseNumber = parseInt(caseCount.value);
          //caseTotalNumber = caseNumber-1;
-         caseTotalNumber = caseNumber;
-         if(isMaximum==true){
-            caseTotalNumber = caseNumber+1;
-         }
-         if(isMaximum==false && caseNumber>0 ){
-            caseTotalNumber = caseNumber-1;
-         }
-         caseCount.value = caseTotalNumber;
-         const casePrice = caseTotalNumber*59;
-         document.getElementById('case-price').innerText="$"+casePrice; 
-  }
+        // caseTotalNumber = caseNumber;
+        // if(isMaximum==true){
+          //  caseTotalNumber = caseNumber+1;
+         //}
+         //if(isMaximum==false && caseNumber>0 ){
+         //   caseTotalNumber = caseNumber-1;
+         //}
+        // caseCount.value = caseTotalNumber;
+         //const casePrice = caseTotalNumber*59;
+         //document.getElementById('case-price').innerText="$"+casePrice; 
+  //}
 
 
  
